@@ -90,6 +90,7 @@ class VampireSlaying():
             print('The vampire lives another day')
 
     def play(self):
+        instructions()
         while not self.vampire_slayed and self.days_left != 0:
             print(f'{self.days_left} Day Left')
             player_status = self.heroTurn()
