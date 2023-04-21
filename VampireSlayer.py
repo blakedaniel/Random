@@ -1,5 +1,7 @@
 from random import randrange, randint
+from time import sleep
 import os
+import sys
 
 
 class vampireBoard():
@@ -51,6 +53,16 @@ class VampireSlaying():
         Good luck!
         ''')
 
+        ready = input('Are you ready to play? (y/n): ')
+        if ready == 'y':
+            os.system('clear')
+            return
+        else:
+            print('See you another time.')
+            sleep(2)
+            sys.exit()
+            
+
     def vampireTurn(self):
         if self.vampire_casket == 1:
             self.vampire_casket += 1
@@ -90,7 +102,8 @@ class VampireSlaying():
             print('The vampire lives another day')
 
     def play(self):
-        instructions()
+        self.instructions()
+
         while not self.vampire_slayed and self.days_left != 0:
             print(f'{self.days_left} Day Left')
             player_status = self.heroTurn()
@@ -107,5 +120,6 @@ class VampireSlaying():
         print('See you another day')
 
 
-vs = VampireSlaying()
-vs.play()
+if __name__ == '__main__':
+    vs = VampireSlaying()
+    vs.play()
